@@ -8,18 +8,21 @@ function gcd(a, b) {
 
 function getLcm(xStr, yStr) {
     if (!/^\d+$/.test(xStr) || !/^\d+$/.test(yStr)) {
-      return "NaN";
-    }
-
-    const x = parseInt(xStr, 10);
-    const y = parseInt(yStr, 10);
-
-    if (x <= 0 || y <= 0) {
         return "NaN";
     }
+    const x = BigInt(xStr);
+    const y = BigInt(yStr);
 
-    const res = Math.abs(x * y) / gcd(x, y);
-    return res.toString();
+    if (x <= 0n || y <= 0n) {
+        return "NaN";
+    }
+    function gcd(a, b) {
+        return b === 0n ? a : gcd(b, a % b);
+    }
+
+    const lcm = (x * y) / gcd(x, y);
+    
+    return lcm.toString();
 }
 
 app.get('/mkjklk970901_gmail_com', (req, res) => {
@@ -32,4 +35,5 @@ app.get('/mkjklk970901_gmail_com', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+
 });
