@@ -26,12 +26,13 @@ function getLcm(xStr, yStr) {
     }
 }
 
-app.get('/kostyatv1790_gmail_com', (req, res) => {
+app.get('/mkjklk970901_gmail_com', (req, res) => {
     const { x, y } = req.query;
     const result = getLcm(x, y);
     
     res.setHeader('Content-Type', 'text/plain');
     res.status(200).send(result); 
 });
+
 
 app.listen(PORT);
